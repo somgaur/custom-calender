@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Custom calendar</title>
+		<link href="custom-calendar.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+			<div class="custom-calendar"></div>
+			<div style="margin-left: 10px; ">
+				<input type="text" id="custom-calendar" />
+			</div>
+		</div>
+		
+		<script src="jquery-3.7.1.min.js"></script>
+		<script src="custom-calendar.js"></script>
+		
+		<script>
+			$(document).ready(function(){
+				$(".custom-calendar").customCalendar({
+					width: '400px', //in pixel or percentage
+					//year: 2024,
+					//month: 12,
+					startDay: 1, // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+					highlightToday: true, // Option to highlight today's date
+					highlightStyle: {
+						color: 'white',
+						fontSize: '16px',
+						backgroundColor: 'red'
+					},
+					color: 'black',      // Text color for today's date
+					fontSize: '16px',    // Font size for today's date
+					backgroundColor: 'white', // Background color for today's date
+					navigation_prev: true,  // Hide the previous button
+					navigation_next: true,  // Hide the next button
+					classname: 'lightgrey-weekends',//
+					tableBorder: true,
+					changeYear: true,
+					changeMonth: true,
+					events: [
+						{ date: '2024-12-05', color: 'red', name: 'Meeting with client' },
+						{ date: '2024-12-05', color: 'blue', name: 'Meeting with media' },
+						{ date: '2024-12-10', color: 'blue', name: 'Team lunch' },
+						{ date: '2024-12-25', color: 'green', name: 'Christmas Day' },
+						{ date: '2024-12-31', color: 'green', name: 'Christmas Day' }
+					],
+					disabledDates: ['2024-12-01', '2024-12-08', '2024-12-15', '2024-12-22', '2024-12-29']
+				});
+				
+				//Work as an datepicker
+				$("#custom-calendar").customCalendar({
+					datepicker: true,
+					dateFormat: 'YYYY-MM-DD',
+					onSelect: function (formattedDate) {
+						//$('#custom-calendar').val(formattedDate);
+						console.log('Selected date:', formattedDate);
+					},
+					events: [
+						{ date: '2024-12-25', color: 'green', name: 'Christmas Day' },
+						{ date: '2024-12-31', color: 'blue', name: 'New Year\'s Eve' },
+					],
+					disabledDates: ['2024-12-26'],
+				});
+			});
+		</script>
+	</body>
+</html>
