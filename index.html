@@ -18,6 +18,10 @@
 		<script src="custom-calendar.js"></script>
 		
 		<script>
+			let today = new Date();
+			let year = today.getFullYear();
+    		let month = String(today.getMonth() + 1).padStart(2, '0');
+
 			$(document).ready(function(){
 				$(".custom-calendar").customCalendar({
 					width: '400px', //in pixel or percentage
@@ -40,11 +44,11 @@
 					changeYear: true,
 					changeMonth: true,
 					events: [
-						{ date: '2024-12-05', color: 'red', name: 'Meeting with client' },
-						{ date: '2024-12-05', color: 'blue', name: 'Meeting with media' },
-						{ date: '2024-12-10', color: 'blue', name: 'Team lunch' },
-						{ date: '2024-12-25', color: 'green', name: 'Christmas Day' },
-						{ date: '2024-12-31', color: 'green', name: 'Christmas Day' }
+						{ date: `${year}-${month}-05`, color: 'red', name: 'Meeting with client' },
+						{ date: `${year}-${month}-05`, color: 'blue', name: 'Meeting with media' },
+						{ date: `${year}-${month}-10`, color: 'blue', name: 'Team lunch' },
+						{ date: `${year}-${month}-25`, color: 'green', name: 'Company Holiday' },
+						{ date: `${year}-${month}-31`, color: 'green', name: 'Month End' }
 					],
 					disabledDates: ['2024-12-01', '2024-12-08', '2024-12-15', '2024-12-22', '2024-12-29']
 				});

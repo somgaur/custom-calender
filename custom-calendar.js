@@ -366,7 +366,8 @@
 			const styleHighlightClass = isDisabled && isToday ? `style="font-weight: bold;"` : `${highlightStyle}`;
 
             let cell = `<td class="${weekendClass} calendar-day ${isDisabled ? 'disabled-date' : ''} ${isSelected ? ' selected-date' : ''} " data-date="${currentDate}" ${isDisabled ? 'disabled' : ''} >`;
-            cell += `<span class="${styleClass} date-number" ${styleHighlightClass} >${day}</span><div class="multievent">`;
+            cell += `<span class="${styleClass} date-number" ${styleHighlightClass} >${day}</span>`;
+            cell += `<div class="multievent">`;
 			
 			// Display event dots or names if there are events for the day
             if (eventsForDay.length > 0) {
@@ -375,7 +376,8 @@
                 });
             }
 
-            return cell + `</div></td>`;
+            cell + `</div>`;
+            return cell + `</td>`;
         };
 		
 		const isWeekend = (dateString) => {
